@@ -1,0 +1,14 @@
+config/config.py
+__pycache__
+include
+lib
+bin
+.ropeproject
+bin
+build
+include
+kropenapi.egg-info
+lib
+lib64
+pip-selfcheck.json
+__pycache__

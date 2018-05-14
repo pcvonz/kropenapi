@@ -62,7 +62,7 @@ class KROpenApi():
             'Proverb': 8,
             }
 
-    multimedia = 'Photo'
+    multimedia = 'Full'
 
     multiMediaOptions = {
             'Full': 0,
@@ -106,6 +106,7 @@ class KROpenApi():
             'type_search': 'search',
             'part': self.partOptions['Examples'],
             'method': self.method,
+            'multimedia': self.multiMediaOptions[self.multimedia],
             'q': q,
             'sort': 'dict'
         })
@@ -131,12 +132,12 @@ class KROpenApi():
             'trans_lang': self.transOptions[self.trans],
             'advanced': self.advancedEnabled,
             'target': self.targetOptions[self.target],
-            'multimedia': self.searchMethodOptions[self.searchMethod],
+            'multimedia': self.multiMediaOptions[self.multimedia],
             'start': self.start
         })
         url = self.krApiUrl + 'search?' + params
-        r = requests.get(url, headers)
-        tree = ElementTree.fromstring(r.text)
+        resp = requests.get(url, headers)
+        tree = ElementTree.fromstring(resp.text)
         try:
             return self.buildKoreanTranslations(tree)
         except:
